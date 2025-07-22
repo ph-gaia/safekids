@@ -41,6 +41,7 @@ export default function NovoCultoPage() {
       const cultoData = {
         ...data,
         criancasPresentes: [],
+        supervisor: '',
       };
 
       const id = await create(cultoData);
