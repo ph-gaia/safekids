@@ -50,6 +50,8 @@ export interface Culto {
   id: string;
   data: string;
   sala: Sala;
+  observacoes?: string;
+  supervisor: string;
   criancasPresentes: CriancaPresente[];
   createdAt: Date;
   updatedAt: Date;
@@ -61,15 +63,10 @@ export interface CriancaPresente {
     horario: Date;
     responsavelId: string;
     fotoResponsavel: string;
-    confirmadoPor: string;
-    fotoServo: string;
   };
   checkOut?: {
     horario: Date;
     responsavelId: string;
-    fotoResponsavel: string;
-    confirmadoPor: string;
-    fotoServo: string;
   };
   status: StatusCheckIn;
 }

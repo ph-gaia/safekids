@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { 
   collection, 
   doc, 
@@ -20,7 +20,7 @@ export function useFirestore<T>(collectionName: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (!db) return;
     
     try {
@@ -42,9 +42,9 @@ export function useFirestore<T>(collectionName: string) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [collectionName]);
 
-  const getById = async (id: string): Promise<T | null> => {
+  const getById = useCallback(async (id: string): Promise<T | null> => {
     if (!db) return null;
     
     try {
@@ -59,7 +59,7 @@ export function useFirestore<T>(collectionName: string) {
       console.error('Erro ao buscar documento:', err);
       return null;
     }
-  };
+  }, [collectionName]);
 
   const create = async (item: Omit<T, 'id' | 'createdAt' | 'updatedAt'>): Promise<string | null> => {
     if (!db) return null;
@@ -113,7 +113,7 @@ export function useFirestore<T>(collectionName: string) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return {
     data,

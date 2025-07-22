@@ -41,7 +41,7 @@ Sistema completo de gestão de presença de crianças em cultos da igreja, com f
 ### 1. Clone o repositório
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ph-gaia/safekids.git
 cd safekids
 ```
 
@@ -164,33 +164,4 @@ service firebase.storage {
     }
   }
 }
-```
-
-## 🧪 Testes
-
-```bash
-# Executar testes
-npm test
-
-# Executar testes em modo watch
-npm run test:watch
-
-# Executar testes com coverage
-npm run test:coverage
-```
-
-## 📦 Deploy
-
-### Vercel (Recomendado)
-
-```bash
-npm run build
-vercel --prod
-```
-
-### Firebase Hosting
-
-```bash
-npm run build
-firebase deploy
 ```
